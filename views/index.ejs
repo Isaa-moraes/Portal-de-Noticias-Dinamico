@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>OCN - Osvaldo City News</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
+  </head>
+  <body>
+    <!-- ========== HEADER (fixed) ========== -->
+    <header id="header" class="fixed-header">
+      <div class="top-bar">
+        <div class="logo-wrap">
+          <img src="logo.png" class="logo" alt="Logo OCN" />
+        </div>
+
+        <div class="brand-info">
+          <span class="brand-acr">OCN</span>
+          <span class="brand-name">Osvaldo City News</span>
+        </div>
+      </div>
+
+      <nav id="menu" class="main-nav">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="noticias.html">Saúde Mental</a></li>
+          <li><a href="#tecnologia">Tecnologia</a></li>
+          <li><a href="#entretenimento">Entretenimento</a></li>
+          <li><a href="#saude">Saúde</a></li>
+          <li><a href="#mundo">Mundo</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+
+        <form class="search" role="search" action="#" method="get">
+          <input
+            name="q"
+            type="search"
+            placeholder="Buscar..."
+            aria-label="Buscar"
+          />
+          <button aria-label="Pesquisar">🔍</button>
+        </form>
+      </nav>
+    </header>
+
+    <!-- ========== MAIN ========== -->
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Acompanhe as melhores notícias na OCN!</h1>
+          <p class="hero-sub">
+            Informação com leveza, clareza e carinho — feita pra você.
+          </p>
+        </div>
+      </section>
+
+      <!-- LAYOUT: conteúdo principal + sidebar -->
+      <div class="layout container">
+        <!-- PRINCIPAL: grid de notícias -->
+        <section class="principal">
+          <h2>Destaques do Dia ☀️</h2>
+
+          <div class="news-grid">
+            <!-- INÍCIO DO LOOP: Para cada notícia na lista... -->
+            <% noticias.forEach(function(item) { %>
+            <article class="card-noticia">
+              <!-- Lógica da Imagem: Se não tiver foto na API, usa uma padrão -->
+              <img
+                src="<%= item.urlToImage || '/img/padrao.jpg' %>"
+                alt="Imagem da notícia"
+                onerror="this.src='/img/padrao.jpg'"
+              />
+              <div class="conteudo">
+                <h3><%= item.title %></h3>
+                <!-- Descrição (limita caso venha vazio) -->
+                <p><%= item.description || 'Sem descrição disponível.' %></p>
+                <!-- Link para a notícia original -->
+                <a href="<%= item.url %>" target="_blank" class="botao"
+                  >Ler Completa</a
+                >
+              </div>
+            </article>
+            <% }); %>
+            <!-- FIM DO LOOP -->
+          </div>
+
+          <br />
+
+          <div class="card-box">
+            <h3>Vídeo em destaque</h3>
+            <!-- vídeo incorporado -->
+            <div class="video-wrap">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/-Z2l1QCidDo?si=SD1kcdXsebUnPgP8"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/OZVth-Ht_xk?si=NwoFPHG9djS-OrK0"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </section>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+          <div class="card-box">
+            <h3>Categorias</h3>
+            <ul class="categories">
+              <li><a href="#saude-mental">Saúde Mental</a></li>
+              <li><a href="#tecnologia">Tecnologia</a></li>
+              <li><a href="#entretenimento">Entretenimento</a></li>
+              <li><a href="#saude">Saúde</a></li>
+              <li><a href="#mundo">Mundo</a></li>
+            </ul>
+          </div>
+
+          <div class="card-box">
+            <h3>Mais lidas</h3>
+            <ol>
+              <li><a href="noticia.html">Matéria mais lida 1</a></li>
+              <li><a href="noticia.html">Matéria mais lida 2</a></li>
+              <li><a href="noticia.html">Matéria mais lida 3</a></li>
+            </ol>
+          </div>
+
+          <div class="card-box">
+            <h3>Newsletter</h3>
+            <form action="#" method="post" class="newsletter">
+              <input
+                type="email"
+                name="email"
+                placeholder="Seu e-mail"
+                required
+              />
+              <button type="submit">Inscrever</button>
+            </form>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer">
+      <p class="nomerodape">Osvaldo City News</p>
+      <small
+        >© 2025 OCN — Osvaldo City News. Acompanhe todas as notícias ao redor do
+        mundo!</small
+      >
+    </footer>
+  </body>
+</html>
