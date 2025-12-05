@@ -40,3 +40,11 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
+
+// Adicione estas linhas no início do app.js temporariamente
+console.log("Testando .env:");
+console.log(
+  "API_KEY:",
+  process.env.API_KEY ? "✅ Carregada" : "❌ Não encontrada"
+);
+console.log("PORT:", process.env.PORT);
